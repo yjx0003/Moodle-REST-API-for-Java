@@ -1,13 +1,13 @@
 package core.course;
 
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import webservices.Util;
 import webservices.WSFunctionAbstract;
-import webservices.WebServiceFunctions;
+import webservices.WSFunctionEnum;
 
 public class CoreCourseGetCategories extends WSFunctionAbstract {
 
@@ -15,22 +15,18 @@ public class CoreCourseGetCategories extends WSFunctionAbstract {
 	private Set<Integer> ids;
 	private Boolean addSubcategories;
 
-	public CoreCourseGetCategories() {
-		super(WebServiceFunctions.CORE_COURSE_GET_CATEGORIES);
-		key = "ids";
-		ids = new HashSet<>();
-	}
-
-	public CoreCourseGetCategories(int... ids) {
-		this();
-		for (int id : ids) {
-			this.ids.add(id);
-		}
-	}
-
 	public CoreCourseGetCategories(Set<Integer> ids) {
-		this();
-		this.ids.addAll(ids);
+		super(WSFunctionEnum.CORE_COURSE_GET_CATEGORIES);
+		key = "ids";
+		this.ids = ids;
+	}
+
+	public CoreCourseGetCategories() {
+		this(new HashSet<>());
+	}
+
+	public CoreCourseGetCategories(Integer... ids) {
+		this(new HashSet<>(Arrays.asList(ids)));
 	}
 
 	public Boolean getAddSubcategories() {
@@ -42,7 +38,7 @@ public class CoreCourseGetCategories extends WSFunctionAbstract {
 	}
 
 	@Override
-	public Map<String, String> getParameters() {
+	public void addToMapParemeters() {
 
 		if (ids != null && !ids.isEmpty()) {
 			String value = ids.stream()
@@ -53,9 +49,8 @@ public class CoreCourseGetCategories extends WSFunctionAbstract {
 			parameters.put("criteria[0][value]", value);
 		}
 
-		Util.putIfNotNull(parameters, "addsubcategories", this.addSubcategories ? "1" : "0");
+		Util.putIfNotNull(parameters, "addsubcategories", Util.booleanToBinary(addSubcategories));
 
-		return parameters;
 	}
 
 }

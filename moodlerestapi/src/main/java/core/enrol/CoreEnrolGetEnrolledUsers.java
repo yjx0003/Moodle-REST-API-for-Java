@@ -7,7 +7,7 @@ import java.util.Set;
 
 import webservices.Util;
 import webservices.WSFunctionAbstract;
-import webservices.WebServiceFunctions;
+import webservices.WSFunctionEnum;
 
 public class CoreEnrolGetEnrolledUsers extends WSFunctionAbstract {
 
@@ -61,7 +61,7 @@ public class CoreEnrolGetEnrolledUsers extends WSFunctionAbstract {
 	private Integer courseid;
 
 	public CoreEnrolGetEnrolledUsers(Integer courseid) {
-		super(WebServiceFunctions.CORE_ENROL_GET_ENROLLED_USERS);
+		super(WSFunctionEnum.CORE_ENROL_GET_ENROLLED_USERS);
 		this.courseid = courseid;
 	}
 
@@ -87,7 +87,7 @@ public class CoreEnrolGetEnrolledUsers extends WSFunctionAbstract {
 	}
 
 	@Override
-	public Map<String, String> getParameters() {
+	public void addToMapParemeters() {
 
 		Map<String, Object> map = new HashMap<>();
 
@@ -103,7 +103,6 @@ public class CoreEnrolGetEnrolledUsers extends WSFunctionAbstract {
 
 		Util.putIfNotNull(parameters, "options", "name", "value", map);
 
-		return parameters;
 	}
 
 	/**

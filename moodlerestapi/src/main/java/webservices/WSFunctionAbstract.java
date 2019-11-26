@@ -3,22 +3,27 @@ package webservices;
 import java.util.Map;
 
 public abstract class WSFunctionAbstract implements WSFunction {
-	private WebServiceFunctions webserviceFunctions;
+	
+	private WSFunctionEnum webserviceFunctions;
 	protected Map<String, String> parameters;
 	
-	public WSFunctionAbstract(WebServiceFunctions webserviceFunctions) {
+	public WSFunctionAbstract(WSFunctionEnum webserviceFunctions) {
 		this.webserviceFunctions = webserviceFunctions;
 	}
 	
 	@Override
-	public WebServiceFunctions getWSFunction() {
+	public WSFunctionEnum getWSFunction() {
 		return webserviceFunctions;
 	}
+
+	@Override
+	public Map<String, String> getParameters() {
+		return parameters;
+	}	
 	
 	@Override
-	public Map<String, String> getParametesAfterClear(){
+	public void clearParameters() {
 		parameters.clear();
-		return getParameters();
 	}
 	
 }

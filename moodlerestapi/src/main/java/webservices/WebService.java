@@ -25,7 +25,7 @@ public class WebService {
 					.ignoreContentType(true)
 					.data("username", username,
 							"password", password,
-							"service", WebServiceFunctions.MOODLE_MOBILE_APP.toString())
+							"service", WSFunctionEnum.MOODLE_MOBILE_APP.toString())
 					.execute()
 					.body();
 
@@ -68,7 +68,7 @@ public class WebService {
 		WebService.moodleWSRestFormat = moodleWSRestFormat;
 	}
 
-	public static String getResponse(WebServiceFunctions wsFunction, Map<String, String> parameters)
+	public static String getResponse(WSFunctionEnum wsFunction, Map<String, String> parameters)
 			throws IOException {
 		String url = host + "/webservice/rest/server.php";
 		return Jsoup.connect(url)
@@ -82,8 +82,10 @@ public class WebService {
 				.execute()
 				.body();
 	}
-	
+
 	public static String getResponse(WSFunction wsFunction) throws IOException {
-		return getResponse(wsFunction.getWSFunction(), wsFunction.getParametesAfterClear());
+		wsFunction.clearParameters();
+		wsFunction.addToMapParemeters();
+		return getResponse(wsFunction.getWSFunction(), wsFunction.getParameters());
 	}
 }

@@ -1,5 +1,6 @@
 package webservices;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -9,16 +10,19 @@ public class Util {
 		throw new UnsupportedOperationException();
 	}
 
-	public static void putIfNotNull(Map<String, String> parameters, String key, Object value) {
+	public static <T> void putIfNotNull(Map<String, String> parameters, String key, T value) {
 		if (value != null)
 			parameters.put(key, value.toString());
 	}
 
-	public static void putIfNotNull(Map<String, String> parameters, String arrayName, String keyName,
-			String valueName, Map<String, Object> map) {
+	public static <T> void putIfNotNull(Map<String, String> parameters, String arrayName, String keyName,
+			String valueName, Map<String, T> map) {
+
+		if (map == null)
+			return;
 
 		int index = 0;
-		for (Entry<String, Object> entry : map.entrySet()) {
+		for (Entry<String, T> entry : map.entrySet()) {
 			String keyValue = entry.getKey();
 			String value = entry.getValue().toString();
 			if (value != null) {
@@ -27,5 +31,46 @@ public class Util {
 				index++;
 			}
 		}
+	}
+
+	public static <T> void putIfNotNull(Map<String, String> parameters, String arrayName, Collection<T> values) {
+		int index = 0;
+
+		if (values == null)
+			return;
+
+		for (T value : values) {
+			if (value != null) {
+				parameters.put(arrayName + "[" + index + "]", value.toString());
+				index++;
+			}
+		}
+	}
+
+	public static <T> void putIfNotNull(Map<String, String> parameters, String arrayName, String keyName,
+			Collection<T> values) {
+
+		if (values == null)
+			return;
+
+		int index = 0;
+		for (T value : values) {
+			if (value != null) {
+				parameters.put(arrayName + "[" + keyName + "][" + index + "]", value.toString());
+				index++;
+			}
+		}
+	}
+
+	public static <T> void putIfNotNull(Map<String, String> parameters, String arrayName, String keyName, T value) {
+		if (value != null) {
+			parameters.put(arrayName + "[" + keyName + "]", value.toString());
+		}
+	}
+
+	public static String booleanToBinary(Boolean bool) {
+		if (bool == null)
+			return null;
+		return bool ? "1" : "0";
 	}
 }

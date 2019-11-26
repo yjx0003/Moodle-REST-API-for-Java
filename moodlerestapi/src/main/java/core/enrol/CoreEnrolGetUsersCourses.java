@@ -1,9 +1,8 @@
 package core.enrol;
 
-import java.util.Map;
-
+import webservices.Util;
 import webservices.WSFunctionAbstract;
-import webservices.WebServiceFunctions;
+import webservices.WSFunctionEnum;
 
 public class CoreEnrolGetUsersCourses extends WSFunctionAbstract {
 
@@ -16,10 +15,10 @@ public class CoreEnrolGetUsersCourses extends WSFunctionAbstract {
 	 * to the response time if a user is on several large courses, so set this to
 	 * false if the value will not be used to improve performance.
 	 */
-	Integer returnusercount;
+	Boolean returnusercount;
 
 	public CoreEnrolGetUsersCourses(Integer userid) {
-		super(WebServiceFunctions.CORE_ENROL_GET_USERS_COURSES);
+		super(WSFunctionEnum.CORE_ENROL_GET_USERS_COURSES);
 		this.userid = userid;
 	}
 
@@ -31,17 +30,18 @@ public class CoreEnrolGetUsersCourses extends WSFunctionAbstract {
 		this.userid = userid;
 	}
 
-	public Integer getReturnusercount() {
+	public Boolean getReturnusercount() {
 		return returnusercount;
 	}
 
-	public void setReturnusercount(Integer returnusercount) {
+	public void setReturnusercount(Boolean returnusercount) {
 		this.returnusercount = returnusercount;
 	}
 
 	@Override
-	public Map<String, String> getParameters() {
-		return null;
+	public void addToMapParemeters() {
+		Util.putIfNotNull(parameters, "userid", userid.toString());
+		Util.putIfNotNull(parameters, "returnusercount", Util.booleanToBinary(returnusercount));
 	}
 
 }

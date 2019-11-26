@@ -5,7 +5,7 @@ import java.util.Map;
 
 import webservices.Util;
 import webservices.WSFunctionAbstract;
-import webservices.WebServiceFunctions;
+import webservices.WSFunctionEnum;
 
 public class CoreCourseGetContents extends WSFunctionAbstract {
 	/**
@@ -51,7 +51,7 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 	private Integer courseid;
 
 	public CoreCourseGetContents(Integer courseid) {
-		super(WebServiceFunctions.CORE_COURSE_GET_CONTENTS);
+		super(WSFunctionEnum.CORE_COURSE_GET_CONTENTS);
 		this.courseid = courseid;
 	}
 
@@ -65,7 +65,6 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 		cmid = builder.cmid;
 		modname = builder.modname;
 		modid = builder.modid;
-
 	}
 
 	public Boolean getExcludemodules() {
@@ -141,7 +140,7 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 	}
 
 	@Override
-	public Map<String, String> getParameters() {
+	public void addToMapParemeters() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("courseid", courseid);
 		map.put("excludemodules", excludemodules);
@@ -154,8 +153,6 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 		map.put("modid", modid);
 
 		Util.putIfNotNull(parameters, "options", "name", "value", map);
-
-		return parameters;
 	}
 
 	/**
@@ -165,7 +162,7 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 	 *            id del curso
 	 * @return builder
 	 */
-	public static Builder newBuilder(int courseid) {
+	public static Builder newBuilder(Integer courseid) {
 		return new Builder(courseid);
 	}
 
@@ -178,46 +175,46 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 	public static class Builder {
 
 		private Integer courseid;
-		private boolean excludemodules;
-		private boolean excludecontents;
-		private boolean includestealthmodules;
+		private Boolean excludemodules;
+		private Boolean excludecontents;
+		private Boolean includestealthmodules;
 		private Integer sectionid;
 		private Integer sectionnumber;
 		private Integer cmid;
 		private String modname;
 		private Integer modid;
 
-		public Builder(int courseid) {
+		public Builder(Integer courseid) {
 			this.courseid = courseid;
 
 		}
 
-		public Builder setExcludemodules(boolean excludemodules) {
+		public Builder setExcludemodules(Boolean excludemodules) {
 			this.excludemodules = excludemodules;
 			return this;
 		}
 
-		public Builder setExcludecontents(boolean excludecontents) {
+		public Builder setExcludecontents(Boolean excludecontents) {
 			this.excludecontents = excludecontents;
 			return this;
 		}
 
-		public Builder setIncludestealthmodules(boolean includestealthmodules) {
+		public Builder setIncludestealthmodules(Boolean includestealthmodules) {
 			this.includestealthmodules = includestealthmodules;
 			return this;
 		}
 
-		public Builder setSectionid(int sectionid) {
+		public Builder setSectionid(Integer sectionid) {
 			this.sectionid = sectionid;
 			return this;
 		}
 
-		public Builder setSectionnumber(int sectionnumber) {
+		public Builder setSectionnumber(Integer sectionnumber) {
 			this.sectionnumber = sectionnumber;
 			return this;
 		}
 
-		public Builder setCmid(int cmid) {
+		public Builder setCmid(Integer cmid) {
 			this.cmid = cmid;
 			return this;
 		}
@@ -227,7 +224,7 @@ public class CoreCourseGetContents extends WSFunctionAbstract {
 			return this;
 		}
 
-		public Builder setModid(int modid) {
+		public Builder setModid(Integer modid) {
 			this.modid = modid;
 			return this;
 		}
