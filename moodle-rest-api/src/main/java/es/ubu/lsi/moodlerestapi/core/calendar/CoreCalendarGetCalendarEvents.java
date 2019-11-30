@@ -7,7 +7,7 @@ import es.ubu.lsi.moodlerestapi.webservices.Util;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionAbstract;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionEnum;
 
-public class CoreCalendarGetGCalendarEvents extends WSFunctionAbstract{
+public class CoreCalendarGetCalendarEvents extends WSFunctionAbstract{
 
 	private Set<Integer> eventids;
 	private Set<Integer> courseids;
@@ -20,7 +20,7 @@ public class CoreCalendarGetGCalendarEvents extends WSFunctionAbstract{
 	private Integer timeend;
 	private Boolean ignorehidden;
 	
-	public CoreCalendarGetGCalendarEvents() {
+	public CoreCalendarGetCalendarEvents() {
 		super(WSFunctionEnum.CORE_CALENDAR_GET_CALENDAR_EVENTS);
 		eventids = new HashSet<>();
 		courseids = new HashSet<>();

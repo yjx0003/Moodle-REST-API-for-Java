@@ -4,27 +4,27 @@ import es.ubu.lsi.moodlerestapi.webservices.Util;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionAbstract;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionEnum;
 
-public class CoreCourseGetRecentCourses extends WSFunctionAbstract{
+public class CoreCourseGetRecentCourses extends WSFunctionAbstract {
 	/**
 	 * id of the user, default to current user
 	 */
 	private Integer userid;
-	
+
 	/**
 	 * result set limit
 	 */
 	private Integer limit;
-	
+
 	/**
 	 * Result set offset
 	 */
 	private Integer offset;
-	
+
 	/**
 	 * Sort string
 	 */
 	private String sort;
-	
+
 	public CoreCourseGetRecentCourses() {
 		super(WSFunctionEnum.CORE_COURSE_GET_RECENT_COURSES);
 	}
@@ -68,6 +68,5 @@ public class CoreCourseGetRecentCourses extends WSFunctionAbstract{
 		Util.putIfNotNull(parameters, "offset", offset);
 		Util.putIfNotNull(parameters, "sort", sort);
 	}
-	
-	
+
 }
