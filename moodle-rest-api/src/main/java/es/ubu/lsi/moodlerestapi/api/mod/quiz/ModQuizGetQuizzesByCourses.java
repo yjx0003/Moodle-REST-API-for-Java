@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.mod.quiz;
+package es.ubu.lsi.moodlerestapi.api.mod.quiz;
 
 import java.util.Set;
 

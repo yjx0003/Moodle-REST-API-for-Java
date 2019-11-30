@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.core.users;
+package es.ubu.lsi.moodlerestapi.api.core.users;
 
 import java.util.Arrays;
 import java.util.HashSet;

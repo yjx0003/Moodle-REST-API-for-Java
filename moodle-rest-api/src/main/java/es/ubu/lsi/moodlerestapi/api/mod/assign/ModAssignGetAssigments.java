@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.mod.assign;
+package es.ubu.lsi.moodlerestapi.api.mod.assign;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.core.course;
+package es.ubu.lsi.moodlerestapi.api.core.course;
 
 import java.util.HashMap;
 import java.util.Map;

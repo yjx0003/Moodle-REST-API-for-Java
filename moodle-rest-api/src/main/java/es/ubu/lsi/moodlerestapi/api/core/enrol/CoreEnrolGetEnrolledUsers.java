@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.core.enrol;
+package es.ubu.lsi.moodlerestapi.api.core.enrol;
 
 import java.util.HashMap;
 import java.util.HashSet;

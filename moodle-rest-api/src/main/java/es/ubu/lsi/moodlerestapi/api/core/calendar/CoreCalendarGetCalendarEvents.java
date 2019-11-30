@@ -1,4 +1,4 @@
-package es.ubu.lsi.moodlerestapi.core.calendar;
+package es.ubu.lsi.moodlerestapi.api.core.calendar;
 
 import java.util.HashSet;
 import java.util.Set;

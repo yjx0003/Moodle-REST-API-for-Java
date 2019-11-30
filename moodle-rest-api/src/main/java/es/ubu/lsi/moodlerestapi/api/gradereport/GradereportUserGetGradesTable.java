@@ -1,17 +1,17 @@
-package es.ubu.lsi.moodlerestapi.gradereport;
+package es.ubu.lsi.moodlerestapi.api.gradereport;
 
 import es.ubu.lsi.moodlerestapi.webservices.Util;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionAbstract;
 import es.ubu.lsi.moodlerestapi.webservices.WSFunctionEnum;
 
-public class GradereportUserGetGradeItems extends WSFunctionAbstract{
-	
+public class GradereportUserGetGradesTable extends WSFunctionAbstract{
+
 	private Integer courseid;
 	private Integer userid;
 	private Integer groupid;
 
-	public GradereportUserGetGradeItems(Integer courseid) {
-		super(WSFunctionEnum.GRADEREPORT_USER_GET_GRADE_ITEMS);
+	public GradereportUserGetGradesTable(Integer courseid) {
+		super(WSFunctionEnum.GRADEREPORT_USER_GET_GRADES_TABLE);
 		this.courseid = courseid;
 	}
 
@@ -45,4 +45,5 @@ public class GradereportUserGetGradeItems extends WSFunctionAbstract{
 		Util.putIfNotNull(parameters, "userid", userid);
 		Util.putIfNotNull(parameters, "groupid", groupid);
 	}
+
 }
