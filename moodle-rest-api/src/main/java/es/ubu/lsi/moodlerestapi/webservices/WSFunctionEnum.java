@@ -6,10 +6,24 @@ import java.util.Map;
 public enum WSFunctionEnum {
 
 	/**
+	 * Fetch the day view data for a calendar 
+	 */
+	CORE_CALENDAR_GET_CALENDAR_DAY_VIEW("core_calendar_get_calendar_day_view", "3.4"),
+	
+	/**
 	 * Get calendar events.
 	 */
 	CORE_CALENDAR_GET_CALENDAR_EVENTS("core_calendar_get_calendar_events", "2.5"),
 	
+	/**
+	 * Fetch the monthly view data for a calendar 
+	 */
+	CORE_CALENDAR_GET_CALENDAR_MONTHLY_VIEW("core_calendar_get_calendar_monthly_view", "3.4"),
+
+	/**
+	 * Fetch the upcoming view data for a calendar 
+	 */
+	CORE_CALENDAR_GET_CALENDAR_UPCOMING_VIEW("core_calendar_get_calendar_upcoming_view", "3.4"),
 	/**
 	 * Get categories.
 	 */
